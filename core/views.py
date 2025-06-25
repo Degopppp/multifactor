@@ -13,10 +13,6 @@ def home_view(request):
     return render(request, 'core/home.html')
 
 def logout_view(request):
-    logout(request)          # Cierra sesión en Django
-    request.session.flush()  # Elimina todos los datos de sesión
-
-    # Redirige a cierre de sesión de Google, y de vuelta a tu 'root'
-    return redirect(
-        'https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8000/'
-    )
+    logout(request)
+    # Redirige a Google para cerrar sesión globalmente
+    return redirect('https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://127.0.0.1:8000/')
